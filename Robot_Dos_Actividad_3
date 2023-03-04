@@ -3,7 +3,7 @@ clear all
 close all
 clc
 %Declaración de variables simbólicas
-syms th1(t) th2(t) th3(t) t l1 l2 a3
+syms th1(t) th2(t) th3(t) t l1 l2 a3 a1
 %Configuración del robot, 0 para junta rotacional, 1 para junta prismática
 RP=[0 0 0];
 %Creamos el vector de coordenadas articulares
@@ -19,11 +19,12 @@ GDL= size(RP,2);
 GDL_str= num2str(GDL);
 %Articulación 1 
 %Posición de la articulación 1 respecto a 0
-P(:,:,1)= [l1*cos(th1); l1*sin(th1);0];
+P(:,:,1)= [l1*cos(th1); l1*sin(th1);a1];
 %Matriz de rotación de la junta 1 respecto a 0
 R(:,:,1)= [cos(th1) -sin(th1)  0;
            sin(th1)  cos(th1)  0;
-           0         0         1];
+           0           0       1];
+
 %Articulación 2
 %Posición de la articulación 2 respecto a 1
 P(:,:,2)= [l2*cos(th2); l2*sin(th2);0];
