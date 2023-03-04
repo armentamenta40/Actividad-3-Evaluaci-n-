@@ -3,7 +3,7 @@ clear all
 close all
 clc
 %Declaración de variables simbólicas
-syms th1(t) th2(t) th3(t) t l1 l2  
+syms th1(t) th2(t) th3(t) t l1 l2 a3
 %Configuración del robot, 0 para junta rotacional, 1 para junta prismática
 RP=[0 0 0];
 %Creamos el vector de coordenadas articulares
@@ -88,7 +88,7 @@ Jv33= functionalDerivative(PO(3,1,GDL), th3);
 jv_d=simplify([Jv11 Jv12 Jv13;
               Jv21 Jv22  Jv23;
               Jv31 Jv32  Jv33]);
-pretty(jv_d);
+%pretty(jv_d);
 %Calculamos el jacobiano lineal de forma analítica
 Jv_a(:,GDL)=PO(:,:,GDL);
 Jw_a(:,GDL)=PO(:,:,GDL);
@@ -114,10 +114,7 @@ for k= 1:GDL
  end    
 Jv_a= simplify (Jv_a);
 Jw_a= simplify (Jw_a);
-disp('Jacobiano lineal obtenido de forma analítica');
 pretty (Jv_a);
-disp('Jacobiano ángular obtenido de forma analítica');
-pretty (Jw_a);
 disp('Velocidad lineal obtenida mediante el Jacobiano lineal');
 V=simplify (Jv_a*Qp');
 pretty(V);
