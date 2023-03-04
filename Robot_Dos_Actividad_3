@@ -17,8 +17,9 @@ Qp= diff(Q, t);
 %Número de grado de libertad del robot
 GDL= size(RP,2);
 GDL_str= num2str(GDL);
+
 %Articulación 1 
-%Posición de la articulación 1 respecto a 0
+%Posición de la articulación 1 respecto a a1
 P(:,:,1)= [l1*cos(th1); l1*sin(th1);a1];
 %Matriz de rotación de la junta 1 respecto a 0
 R(:,:,1)= [cos(th1) -sin(th1)  0;
